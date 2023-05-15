@@ -2,14 +2,14 @@
     <string name="app_name">Organic Percent</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Organic Percent Inc.</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_about">About</string>
-    <string name="menu_product">Products</string>
-    <string name="menu_supplier">Suppliers</string>
+    <string name="menu_about">Sobre</string>
+    <string name="menu_product">Produtos</string>
+    <string name="menu_supplier">Fornecedores</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="salvar">salvar</string>
@@ -19,4 +19,17 @@
     <string name="valor_do_produto">valor do produto</string>
     <string name="descricao_o_do_produto">descrição do produto</string>
     <string name="nome_do_produto">nome do produto</string>
+
+    <!-- About texts -->
+    <string name="intro_title_text">A Mudança começa pelo nosso prato!</string>
+    <string name="intro_text">Na Organic Percent, acreditamos que a mudança começa pelo nosso prato. Ao escolher orgânicos, alimentamos o desenvolvimento de pequenos agricultores familiares, preservamos a qualidade do solo e da água e também a biodiversidade brasileira. São alimentos que cuidam do nosso corpo e também do nosso planeta.</string>
+    <string name="organic_product_title_text">O que é um produto orgânico?</string>
+    <string name="organic_product_text">Um produto orgânico é “aquele obtido dentro de um sistema orgânico de produção agropecuária – ou extrativista sustentável – que beneficie o ecossistema local, proteja os recursos naturais, respeite as características socioeconômicas e culturais da comunidade local, preserve os direitos dos trabalhadores envolvidos e não utilize organismos geneticamente modificados nem químicos sintéticos” (essa é a definição de acordo com a Lei n° 10.831, de dezembro de 2003, que regula a agricultura orgânica no Brasil). </string>
+    <string name="ok_organic_title_text">OK, mas o que isso significa?</string>
+    <string name="ok_organic_text">A agricultura orgânica não utiliza agrotóxicos, pesticidas e fertilizantes sintéticos. Ou seja, são produtos livres de venenos ou adubos químicos. De forma simples, um alimento orgânico respeita o ciclo natural das plantas e do solo e prioriza a diversificação de culturas, o que resulta em alimentos, mãe-terráqueos e planeta mais saudáveis. Conserva a qualidade do nosso solo e água, além de cuidar dos nossos produtores. Conservam a biodiversidade vegetal, de insetos e de animais silvestres, que ajudam na polinização e no equilíbrio do planeta.</string>
+    <string name="really_organic_title_text">Como saber se um produto é realmente orgânico?</string>
+    <string name="really_organic_text">Frutas e hortaliças vendidas direto ao consumidor em feiras ou utilizadas em restaurantes: o produtor deve apresentar um Certificado de Cadastro, que comprova seu vínculo com o Ministério da Agricultura. Esse documento pode ser solicitado pelos consumidores ou pela fiscalização a qualquer momento. Produtos a granel e em restaurantes também devem sinalizar quais ingredientes são orgânicos e declarar quais são seus fornecedores. Produtos vendidos já embalados no comércio: devem ter o selo federal do SisOrg (Sistema Brasileiro de Avaliação da Conformidade Orgânica). O selo garante que esse produto foi fiscalizado e que cumpre com todas as exigências estabelecidas na lei.</string>
+    <string name="organic_market_title_text">Selo orgânico</string>
+    <string name="organic_market_text">Como dissemos acima, um produto é considerado orgânico com o Selo SISORG – Sistema Brasileiro de Avaliação de Conformidade Orgânica. Aqui no Brasil, os produtores precisam seguir normas e procedimentos de produção para poder comercializar seu produto orgânico, que são definidos pelo sistema oficial de certificação. Ele é operado por certificadoras privadas, validadas e acompanhadas pelo MAPA – Ministério da Agricultura, Pecuária e Abastecimento, que criou um selo nacional de certificação. De acordo com a lei, todo produto orgânico no Brasil – exceto aqueles que os pequenos produtores</string>
+
 </resources>

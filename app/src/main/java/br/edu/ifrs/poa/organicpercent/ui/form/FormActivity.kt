@@ -1,5 +1,6 @@
 package br.edu.ifrs.poa.organicpercent.ui.form
 
+import android.app.Activity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -63,8 +64,9 @@ class FormActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO) {
                 supplierDao.insert(supplier)
                 productDao.insert(product)
+                setResult(Activity.RESULT_OK)
+                finish()
             }
-            finish()
 
         } else {
 

@@ -4,39 +4,57 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import br.edu.ifrs.poa.organicpercent.databinding.FragmentSupplierBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import br.edu.ifrs.poa.organicpercent.OrganicPercentApplication
+import br.edu.ifrs.poa.organicpercent.R
+import br.edu.ifrs.poa.organicpercent.database.SupplierDao
+import br.edu.ifrs.poa.organicpercent.ui.recyclerview.adapter.SupplierListAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SupplierFragment : Fragment() {
 
-    private var _binding: FragmentSupplierBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var supplierDao: SupplierDao
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var supplierListAdapter: SupplierListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val supplierViewModel =
-            ViewModelProvider(this)[SupplierViewModel::class.java]
-
-        _binding = FragmentSupplierBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textSlideshow
-        supplierViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+    ): View? {
+        return inflater.inflate(R.layout.fragment_supplier, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        supplierDao = (requireActivity().application as OrganicPercentApplication).db.supplierDao()
+
+        recyclerView = view.findViewById(R.id.supplier_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val suppliers = supplierDao.listAll()
+            withContext(Dispatchers.Main) {
+                val supplierAdapter = SupplierListAdapter(suppliers)
+                recyclerView.adapter = supplierAdapter
+                supplierListAdapter = supplierAdapter
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.IO).launch {
+            val suppliers = supplierDao.listAll()
+            withContext(Dispatchers.Main) {
+                supplierListAdapter.setData(suppliers)
+            }
+        }
     }
 }

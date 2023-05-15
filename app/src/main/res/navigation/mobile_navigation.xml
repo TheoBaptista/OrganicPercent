@@ -6,16 +6,16 @@
     app:startDestination="@+id/nav_product">
 
     <fragment
-        android:id="@+id/nav_product"
-        android:name="br.edu.ifrs.poa.organicpercent.ui.product.ProductFragment"
-        android:label="@string/menu_product"
-        tools:layout="@layout/fragment_product" />
-
-    <fragment
         android:id="@+id/nav_about"
         android:name="br.edu.ifrs.poa.organicpercent.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/nav_product"
+        android:name="br.edu.ifrs.poa.organicpercent.ui.product.ProductFragment"
+        android:label="@string/menu_product"
+        tools:layout="@layout/fragment_product" />
 
     <fragment
         android:id="@+id/nav_supplier"

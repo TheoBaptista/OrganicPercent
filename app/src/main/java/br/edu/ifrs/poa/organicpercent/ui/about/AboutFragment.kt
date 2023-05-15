@@ -6,37 +6,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import br.edu.ifrs.poa.organicpercent.databinding.FragmentAboutBinding
+import br.edu.ifrs.poa.organicpercent.R
 
 class AboutFragment : Fragment() {
-
-    private var _binding: FragmentAboutBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val aboutViewModel =
-            ViewModelProvider(this)[AboutViewModel::class.java]
-
-        _binding = FragmentAboutBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textGallery
-        aboutViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
+    ): View? {
+        return inflater.inflate(R.layout.fragment_about, container, false)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val introTitle = view.findViewById<TextView>(R.id.intro_title_text)
+        val introText = view.findViewById<TextView>(R.id.intro_text)
+        val organicProductTitle = view.findViewById<TextView>(R.id.organic_product_title_text)
+        val organicProductText = view.findViewById<TextView>(R.id.organic_product_text)
+        val reallyOrganicTitle = view.findViewById<TextView>(R.id.really_organic_title_text)
+        val reallyOrganicText = view.findViewById<TextView>(R.id.really_organic_text)
+        val okOrganicTitle = view.findViewById<TextView>(R.id.ok_organic_title_text)
+        val okOrganicText = view.findViewById<TextView>(R.id.ok_organic_text)
+        val organicMarketTitle = view.findViewById<TextView>(R.id.organic_market_title_text)
+        val organicMarketText = view.findViewById<TextView>(R.id.organic_market_text)
+
+        introTitle.setText(R.string.intro_title_text)
+        introText.setText(R.string.intro_text)
+        organicProductTitle.setText(R.string.organic_product_title_text)
+        organicProductText.setText(R.string.organic_product_text)
+        reallyOrganicTitle.setText(R.string.really_organic_title_text)
+        reallyOrganicText.setText(R.string.really_organic_text)
+        okOrganicTitle.setText(R.string.ok_organic_title_text)
+        okOrganicText.setText(R.string.ok_organic_text)
+        organicMarketTitle.setText(R.string.organic_market_title_text)
+        organicMarketText.setText(R.string.organic_market_text)
     }
 }

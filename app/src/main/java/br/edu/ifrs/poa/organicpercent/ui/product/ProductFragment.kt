@@ -4,54 +4,58 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.edu.ifrs.poa.organicpercent.OrganicPercentApplication
-import br.edu.ifrs.poa.organicpercent.databinding.FragmentProductBinding
+import br.edu.ifrs.poa.organicpercent.R
+import br.edu.ifrs.poa.organicpercent.database.ProductDao
+import br.edu.ifrs.poa.organicpercent.ui.recyclerview.adapter.ProductListAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProductFragment : Fragment() {
 
-    private var _binding: FragmentProductBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var productDao: ProductDao
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var productListAdapter: ProductListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val productViewModel =
-            ViewModelProvider(this)[ProductViewModel::class.java]
+    ): View? {
+        return inflater.inflate(R.layout.fragment_product, container, false)
+    }
 
-        _binding = FragmentProductBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val app = requireContext().applicationContext as OrganicPercentApplication
-        val supplierDao = app.db.supplierDao()
-        val productDao = app.db.productDao()
+        productDao = (requireActivity().application as OrganicPercentApplication).db.productDao()
 
-        // Perform database operations on a background thread
-        CoroutineScope(Dispatchers.IO).launch(Dispatchers.IO) {
-            val suppliers = supplierDao.listAll()
+        recyclerView = view.findViewById(R.id.product_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        CoroutineScope(Dispatchers.IO).launch {
             val products = productDao.listAll()
-            println("fornecedores: ${suppliers.size} produtos: ${products.size}")
+            withContext(Dispatchers.Main) {
+                val productAdapter = ProductListAdapter(products)
+                recyclerView.adapter = productAdapter
+                productListAdapter = productAdapter
+            }
         }
-
-        val textView: TextView = binding.textHome
-        productViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.IO).launch {
+            val products = productDao.listAll()
+            withContext(Dispatchers.Main) {
+                productListAdapter.setData(products)
+            }
+        }
     }
+
 }
