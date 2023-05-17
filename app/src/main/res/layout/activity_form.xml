@@ -137,11 +137,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@string/salvar"
+            app:backgroundTint="@color/green"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_form_input_layout_supplier_phone"
-            app:layout_constraintVertical_bias="1" />
+            app:layout_constraintVertical_bias="1"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
