@@ -16,4 +16,7 @@ interface ProductDao {
 
     @Query("SELECT * FROM products")
     fun listAll(): List<Product>
+
+    @Query("SELECT * FROM products WHERE productId = :productId")
+    fun findById(productId: Long): Product?
 }

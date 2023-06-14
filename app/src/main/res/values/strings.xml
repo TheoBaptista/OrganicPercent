@@ -5,7 +5,7 @@
     <string name="nav_header_title">Organic Percent Inc.</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_infos">Informações</string>
 
     <string name="menu_about">Sobre</string>
     <string name="menu_product">Produtos</string>
@@ -31,5 +31,12 @@
     <string name="really_organic_text">Frutas e hortaliças vendidas direto ao consumidor em feiras ou utilizadas em restaurantes: o produtor deve apresentar um Certificado de Cadastro, que comprova seu vínculo com o Ministério da Agricultura. Esse documento pode ser solicitado pelos consumidores ou pela fiscalização a qualquer momento. Produtos a granel e em restaurantes também devem sinalizar quais ingredientes são orgânicos e declarar quais são seus fornecedores. Produtos vendidos já embalados no comércio: devem ter o selo federal do SisOrg (Sistema Brasileiro de Avaliação da Conformidade Orgânica). O selo garante que esse produto foi fiscalizado e que cumpre com todas as exigências estabelecidas na lei.</string>
     <string name="organic_market_title_text">Selo orgânico</string>
     <string name="organic_market_text">Como dissemos acima, um produto é considerado orgânico com o Selo SISORG – Sistema Brasileiro de Avaliação de Conformidade Orgânica. Aqui no Brasil, os produtores precisam seguir normas e procedimentos de produção para poder comercializar seu produto orgânico, que são definidos pelo sistema oficial de certificação. Ele é operado por certificadoras privadas, validadas e acompanhadas pelo MAPA – Ministério da Agricultura, Pecuária e Abastecimento, que criou um selo nacional de certificação. De acordo com a lei, todo produto orgânico no Brasil – exceto aqueles que os pequenos produtores</string>
+    <string name="delete">Excluir</string>
+    <string name="update">Editar</string>
+    <string name="update_supplier">Editar Fornecedor</string>
+    <string name="name">Nome</string>
+    <string name="address">Endereço</string>
+    <string name="phone">Telefone</string>
+    <string name="update_product">Editar produto</string>
 
 </resources>

@@ -16,4 +16,7 @@ interface SupplierDao {
 
     @Query("SELECT * FROM suppliers")
     fun listAll(): List<Supplier>
+
+    @Query("SELECT * FROM suppliers WHERE supplierId = :supplierId")
+    fun findById(supplierId: Long): Supplier?
 }

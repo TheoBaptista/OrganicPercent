@@ -2,6 +2,9 @@ package br.edu.ifrs.poa.organicpercent
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -46,6 +49,35 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_infos -> {
+                showAboutDialog()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun showAboutDialog() {
+        val aboutText = """
+            Aluno: Theo Baptista            
+            Disciplina: Programação para Web III            
+            Semestre: 2023/1
+        """.trimIndent()
+
+        AlertDialog.Builder(this)
+            .setTitle("Informações do App")
+            .setMessage(aboutText)
+            .setPositiveButton("OK", null)
+            .show()
     }
 
     companion object{
